@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+
+<!doctype html>
+<html lang="en">
+    <head>
+        {% block head %}
+			<!-- Required meta tags -->
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+			{% block styles %}
+			<link rel="stylesheet" href="/assets/bundle.css">
+			{% endblock %}
+
+			<title>{% block title %}{% endblock %}</title>
+		{% endblock %}
+		
+    </head>
+    <body>
+		
+		<!-- Your page content -->
+		<div class="jumbotron">
+			
+			<div class="container">
+				<h1>{{ self.title() }}</h1>
+				{%- with messages = get_flashed_messages(with_categories=True) %}
+				{%- if messages %}
+				<div class="row">
+					<div class="col-md-12">
+						{{ utils.flashed_messages(messages) }}
+					</div>
+				</div>
+				{%- endif %}
+				{%- endwith %}
+	
+				{% block content %}{% endblock %}				
+			</div>
+
+		</div>
+
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

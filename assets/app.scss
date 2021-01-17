@@ -1,0 +1,15 @@
+@use "@material/floating-label/mdc-floating-label";
+@use "@material/line-ripple/mdc-line-ripple";
+@use "@material/notched-outline/mdc-notched-outline";
+@use "@material/textfield";
+
+// Import your theme variables
+@import "my-theme";
+
+// Import MDC Web components
+@import "@material/typography/mdc-typography";
+@import "@material/button/mdc-button";
+@include textfield.core-styles;
+
+// Import your components for your application
+@import "my-components";

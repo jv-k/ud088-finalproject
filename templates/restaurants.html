@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Restaurants 🍽{% endblock %}
+
+{% block content %}
+
+	<a href="{{ url_for('newRestaurant') }}">New Restaurant✨</a>
+
+	{% if restaurants is defined %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Name</th>
+				<th scope="col">&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for restaurant in restaurants %}
+			<tr>
+				<th scope="row">{{ restaurant.id }}</th>
+				<td><a href="{{ url_for('showMenu', restaurant_id = restaurant.id) }}">{{ restaurant.name }}</a></td>
+				<td>
+					<a href="{{ url_for('editRestaurant',restaurant_id = restaurant.id) }}" class="btn btn-success btn-sm">✏️&nbsp;</a>
+					&nbsp;
+					<a href="{{ url_for('deleteRestaurant',restaurant_id = restaurant.id) }}" class="btn btn-success btn-sm">🗑&nbsp;</a>
+				</td>
+			</tr>			
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	<p>No restaurants to show.</p>
+	{% endif %}
+</div>
+
+{% endblock %}
